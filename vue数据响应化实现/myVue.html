@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p @click="handleClick">{{counter}}</p>
+    <p m-text="counter"></p>
+    <p m-html="htmlContent"></p>
+    <input type="text" m-model="htmlContent">
+  </div>
+</body>
+
+<script src="./compile.js"></script>
+<script src="./myVue.js"></script>
+
+<script>
+  const app = new MyVue({
+    el: "#app",
+    data: {
+      counter: 1,
+      htmlContent: '<span style="color:red">改变html值</span>'
+    },
+    methods: {
+      handleClick() {
+        this.counter = this.counter * 2
+      }
+    },
+  })
+  setInterval(() => {
+    app.counter++
+  }, 1000)
+</script>
+
+</html>
